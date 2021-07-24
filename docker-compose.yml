@@ -1,0 +1,7 @@
+version: '3'
+services:
+  smartsocket:
+    container_name: smart-socket
+    build: .
+    env_file:
+      - .env.local
