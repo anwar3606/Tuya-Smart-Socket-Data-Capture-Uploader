@@ -20,26 +20,16 @@ influxdb = InfluxDB()
 
 
 def generate():
-    start_time = time.time()
     data = device.get_data()
-    duration = time.time() - start_time
-    logging.info('Device took: %.2f second', duration)
-
     logging.info('Data found: %s', data)
 
-    start_time = time.time()
     influxdb.upload(data)
-    duration = time.time() - start_time
-    logging.info('InfluxDB took: %.2f second', duration)
 
-    start_time = time.time()
     dynamodb.upload({
         'date': str(datetime.datetime.utcnow().date()),
         'time': str(datetime.datetime.utcnow().time()),
         **data
     })
-    duration = time.time() - start_time
-    logging.info('DynamoDB took: %.2f second', duration)
 
 
 def run_every_one_sec():
