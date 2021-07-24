@@ -8,7 +8,8 @@ class TuyaSmartSocket:
     DP_NAMES = {
         "18": "current",
         "19": "power",
-        "20": "voltage"
+        "20": "voltage",
+        "17": "electricity"
     }
 
     def __init__(self):
