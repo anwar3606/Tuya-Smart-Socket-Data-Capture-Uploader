@@ -20,8 +20,12 @@ influxdb = InfluxDB()
 
 
 def generate():
-    data = device.get_data()
-    logging.info('Data found: %s', data)
+    try:
+        data = device.get_data()
+        logging.info('Data found: %s', data)
+    except Exception:
+        logging.error('Missing data!')
+        return
 
     influxdb.upload(data)
 
