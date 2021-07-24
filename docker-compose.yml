@@ -3,5 +3,6 @@ services:
   smartsocket:
     container_name: smart-socket
     build: .
+    restart: unless-stopped
     env_file:
       - .env.local
