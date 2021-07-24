@@ -1,0 +1,3 @@
+tinytuya
+boto3
+influxdb-client
